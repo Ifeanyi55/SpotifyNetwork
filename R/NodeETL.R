@@ -12,7 +12,11 @@
 #'
 #' @examples
 #' related_artists_nodes(artist_id = "3fMbdgg4jU18AjLCKBhRSm")
-  related_artists_nodes <- function(artist_id){
+
+library(spotifyr)
+library(dplyr)
+library(reactable)
+related_artists_nodes <- function(artist_id){
   # get artists related to main artist
   related_artists <- get_related_artists(id = artist_id,
                                          include_meta_info = TRUE)
