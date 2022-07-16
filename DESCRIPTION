@@ -1,0 +1,22 @@
+Package: SpotifyNetwork
+Type: Package
+Title: SpotifyNetwork 
+Version: 0.1.0
+Author: Ifeanyi Idiaye
+Maintainer: Ifeanyi Idiaye <idiayeifeanyi@yahoo.com>
+Description: The SpotifyNetwork package allows a user to query the Spotify API
+             and return a network graph and data of artists that are related to
+             a specific artist, using the artist's unique Spotify Id as the query
+             argument.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    dplyr,
+    ggplot2,
+    plotly,
+    reactable,
+    spotifyr,
+    viridis,
+    visNetwork
+RoxygenNote: 7.1.2
