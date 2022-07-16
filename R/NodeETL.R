@@ -17,7 +17,7 @@ related_artists_nodes <- function(artist_id){
 
   suppressPackageStartupMessages(library(spotifyr,quietly = T))
   suppressPackageStartupMessages(library(dplyr,quietly = T))
-  suppressPackageStartupMessageslibrary(reactable,quietly = T)()
+  suppressPackageStartupMessages(library(reactable,quietly = T))
 
 
 
