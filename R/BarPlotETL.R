@@ -14,11 +14,12 @@
 
 artists_popularity <- function(artist_id){
 
-  library(spotifyr,quietly = T)
-  library(dplyr,quietly = T)
-  library(plotly,quietly = T)
-  library(ggplot2,quietly = T)
-  library(viridis,quietly = T)
+  suppressPackageStartupMessages(library(spotifyr,quietly = T))
+  suppressPackageStartupMessages(library(dplyr,quietly = T))
+  suppressPackageStartupMessages(library(plotly,quietly = T))
+  suppressPackageStartupMessages(library(ggplot2,quietly = T))
+  suppressPackageStartupMessages(library(viridis,quietly = T))
+
 
   # get related artists
   related_artists <- get_related_artists(id = artist_id,
@@ -136,7 +137,7 @@ artists_popularity <- function(artist_id){
 
   # create random color fill options
   fill <- c("A","B","C","D","E","F","G","H")
-  rand_fill <- sample(flare,size = 1)
+  rand_fill <- sample(fill,size = 1)
 
   # plot top twenty most popular nodes
   ggnodes <- nodes_df |>

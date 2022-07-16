@@ -13,9 +13,10 @@
 #' related_artists_network(artist_id = "3fMbdgg4jU18AjLCKBhRSm")
 related_artists_network <- function(artist_id){
 
-  library(spotifyr,quietly = T)
-  library(dplyr,quietly = T)
-  library(visNetwork,quietly = T)
+  suppressPackageStartupMessages(library(spotifyr,quietly = T))
+  suppressPackageStartupMessages(library(dplyr,quietly = T))
+  suppressPackageStartupMessages(library(visNetwork,quietly = T))
+
 
   # get artists related to main artist
   related_artists <- get_related_artists(id = artist_id,

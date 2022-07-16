@@ -14,9 +14,10 @@
 
 related_artists_edges <- function(artist_id){
 
-  library(spotifyr,quietly = T)
-  library(dplyr,quietly = T)
-  library(reactable,quietly = T)
+  suppressPackageStartupMessages(library(spotifyr,quietly = T))
+  suppressPackageStartupMessages(library(dplyr,quietly = T))
+  suppressPackageStartupMessages(library(reactable,quietly = T))
+
 
   # get artists related to main artist
   related_artists <- get_related_artists(id = artist_id,
