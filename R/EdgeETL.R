@@ -12,10 +12,12 @@
 #' @examples
 #' related_artists_edges(artist_id = "3fMbdgg4jU18AjLCKBhRSm")
 
-library(spotifyr)
-library(dplyr)
-library(reactable)
 related_artists_edges <- function(artist_id){
+
+  library(spotifyr,quietly = T)
+  library(dplyr,quietly = T)
+  library(reactable,quietly = T)
+
   # get artists related to main artist
   related_artists <- get_related_artists(id = artist_id,
                                          include_meta_info = TRUE)

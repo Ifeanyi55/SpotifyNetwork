@@ -12,12 +12,14 @@
 #' @examples
 #' artists_popularity(artist_id = "3fMbdgg4jU18AjLCKBhRSm")
 
-library(spotifyr)
-library(dplyr)
-library(plotly)
-library(ggplot2)
-library(viridis)
 artists_popularity <- function(artist_id){
+
+  library(spotifyr,quietly = T)
+  library(dplyr,quietly = T)
+  library(plotly,quietly = T)
+  library(ggplot2,quietly = T)
+  library(viridis,quietly = T)
+
   # get related artists
   related_artists <- get_related_artists(id = artist_id,
                                          include_meta_info = TRUE)
