@@ -1,7 +1,7 @@
 
 #' Get Network Nodes Data
 #'
-#' This function returns an interactive table of the artists in the
+#' This function returns a data frame of the artists in the
 #' network and their features.
 #'
 #' @param artist_id Character string of the search artist's Spotify Id
@@ -125,20 +125,8 @@ related_artists_nodes <- function(artist_id){
 
   nodes <- distinct(nodes,Vertex,Name,Popularity,Followers,.keep_all = T)
 
-  nodes_table <- reactable(nodes,
-                           theme = reactableTheme(highlightColor = "#34B3F1",
-                                                  borderColor = "#34B3F1"),
-                           outlined = T,
-                           bordered = T,
-                           filterable = T,
-                           striped = T,
-                           compact = T,
-                           highlight = T,
-                           defaultColDef = colDef(align = "center",
-                                                  headerStyle = list(background = "#34B3F1")),
-                           paginationType = "simple")
 
-  return(nodes_table)
+  return(nodes)
 
 }
 

@@ -13,7 +13,7 @@ related_artists_edges(artist_id)
 table
 }
 \description{
-This function returns an interactive table of the edges in
+This function returns a data frame of the edges in
 the network graph.
 }
 \examples{

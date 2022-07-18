@@ -13,7 +13,7 @@ related_artists_nodes(artist_id)
 table
 }
 \description{
-This function returns an interactive table of the artists in the
+This function returns a data frame of the artists in the
 network and their features.
 }
 \examples{

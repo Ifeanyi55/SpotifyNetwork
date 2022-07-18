@@ -1,7 +1,7 @@
 
 #' Get Network Edges Data
 #'
-#' This function returns an interactive table of the edges in
+#' This function returns a data frame of the edges in
 #' the network graph.
 #'
 #' @param artist_id Character string of the search artist's Spotify Id
@@ -443,20 +443,8 @@ related_artists_edges <- function(artist_id){
   edges <- edges |>
     relocate(id)
 
-  edges_table <- reactable(edges,
-                           theme = reactableTheme(highlightColor = "#00FFAB",
-                                                  borderColor = "#00FFAB"),
-                           outlined = T,
-                           bordered = T,
-                           filterable = T,
-                           striped = T,
-                           compact = T,
-                           highlight = T,
-                           defaultColDef = colDef(align = "center",
-                                                  headerStyle = list(background = "#00FFAB")),
-                           paginationType = "simple")
 
-  return(edges_table)
+  return(edges)
 
 
 }
