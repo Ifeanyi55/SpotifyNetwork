@@ -143,13 +143,13 @@ artists_popularity <- function(artist_id){
   ggnodes <- nodes_df |>
     ggplot()+aes(x = Artist,y = Popularity,fill = Artist)+
     geom_bar(stat = "identity")+coord_flip()+
-    labs(title = "Top Twenty Most Popular Artists In Network",
-         x = "Artists")+scale_fill_viridis(discrete = T,option = rand_fill)+
+    ggtitle("Top 20 Most Popular Artists")+
+    labs(x = "Artists")+scale_fill_viridis(discrete = T,option = rand_fill)+
     scale_y_continuous(expand = c(0,0))+
     theme(axis.ticks = element_blank(),
           legend.position = "none",
           axis.text = element_text(size = 10,face = "bold"),
-          plot.title = element_text(size = 15,face = "bold"),
+          plot.title = element_text(size = 12,face = "bold",hjust = 0.5),
           axis.title.x = element_text(size = 12,face = "bold"),
           axis.title.y = element_text(hjust = 0.8,size = 12,face = "bold"))
 

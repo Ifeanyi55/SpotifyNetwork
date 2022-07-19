@@ -534,7 +534,7 @@ related_artists_network <- function(artist_id){
 
 
   # render network graph
-  spotivis <- visNetwork(nodes = nodes,edges = edgy,width = "100%",height = "650px",
+  spotivis <- visNetwork(nodes = nodes,edges = edgy,width = "100%",height = "400px",
                          main = "Spotify Related Artists Network Graph",
                          footer = paste0("<p><b>","Source: Spotify API","</b></p>")) |>
     visEdges(shadow = TRUE,smooth = F,width = 5,
@@ -551,7 +551,7 @@ related_artists_network <- function(artist_id){
                    dragView = T,
                    hover = T,
                    selectable = F,
-                   navigationButtons = T,
+                   navigationButtons = F,
                    tooltipDelay = 0,
                    tooltipStay = 500) |>
     visOptions(nodesIdSelection = F,highlightNearest = F)
