@@ -437,14 +437,42 @@ related_artists_edges <- function(artist_id){
                         other_related[[19]]$name))
   )
 
-  # add edge id column and locate in front of data.frame
-  edges$id <- 1:nrow(edges)
+  # write self_loop elimination function
+  selfLoop_eliminate <- function(df,colA,colB){
 
-  edges <- edges |>
-    relocate(id)
+    # empty vector to store the result of the for loop
+    self_loop <- c()
+    # for loop to check if the rows of each column match
+    # returns a vector of boolean values
+    for(i in 1:nrow(df)){
+      result <- colA[i] == colB[i]
+      self_loop <- c(self_loop,result)
+    }
+
+    # append boolean vector to data frame
+    df$self_loop <- self_loop
+
+    # filter out boolean that is TRUE, leaving only FALSE
+    df <- df |> filter(self_loop == FALSE)
+
+    # delete self_loop column from df
+    df <- df[,-3]
+
+    return(df)
+
+  }
+
+  # eliminate self-loops in the data frame
+  edges <- selfLoop_eliminate(df = edges,
+                              colA = edges$Vertex1,
+                              colB = edges$Vertex2)
 
 
-  return(edges)
+  # delete duplicate rows
+  edges_df <- distinct(edges,Vertex1,Vertex2,.keep_all = T)
+
+
+  return(edges_df)
 
 
 }

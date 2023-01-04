@@ -34,30 +34,28 @@ related_artists_nodes <- function(artist_id){
     other_related <- append(other_related,result)
   }
 
+  # get images
+  images <- c()
+  for(i in other_related){ # this loops through the list
+    for(k in 1:nrow(i)){ # this loops through each table in list
+      image_urls <- i$images[[k]]$url[2] # the third image is collected per row in each table
+      images <- append(images,image_urls)
+    }
+  }
+
+  # get genres
+  genre <- c()
+  for(i in (other_related)){ # this loops through each list
+    for(j in 1:nrow(i)){ # this loops through each table in list
+      result <- i$genres[[j]][2] # this collects the 2nd item in the vector of genres
+      genre <- append(genre,result)
+    }
+  }
+
   nodes <- data.frame(
     Id = c(1:400),
-    Vertex = tolower(c(other_related[[1]]$name,
-                       other_related[[2]]$name,
-                       other_related[[3]]$name,
-                       other_related[[4]]$name,
-                       other_related[[5]]$name,
-                       other_related[[6]]$name,
-                       other_related[[7]]$name,
-                       other_related[[8]]$name,
-                       other_related[[9]]$name,
-                       other_related[[10]]$name,
-                       other_related[[11]]$name,
-                       other_related[[12]]$name,
-                       other_related[[13]]$name,
-                       other_related[[14]]$name,
-                       other_related[[15]]$name,
-                       other_related[[16]]$name,
-                       other_related[[17]]$name,
-                       other_related[[18]]$name,
-                       other_related[[19]]$name,
-                       other_related[[20]]$name)),
 
-    Name = c(other_related[[1]]$name,
+    name = c(other_related[[1]]$name,
              other_related[[2]]$name,
              other_related[[3]]$name,
              other_related[[4]]$name,
@@ -78,7 +76,7 @@ related_artists_nodes <- function(artist_id){
              other_related[[19]]$name,
              other_related[[20]]$name),
 
-    Popularity = c(c(other_related[[1]]$popularity,
+    popularity = c(c(other_related[[1]]$popularity,
                      other_related[[2]]$popularity,
                      other_related[[3]]$popularity,
                      other_related[[4]]$popularity,
@@ -99,7 +97,7 @@ related_artists_nodes <- function(artist_id){
                      other_related[[19]]$popularity,
                      other_related[[20]]$popularity)),
 
-    Followers = c(c(other_related[[1]]$followers.total,
+    followers = c(c(other_related[[1]]$followers.total,
                     other_related[[2]]$followers.total,
                     other_related[[3]]$followers.total,
                     other_related[[4]]$followers.total,
@@ -118,15 +116,41 @@ related_artists_nodes <- function(artist_id){
                     other_related[[17]]$followers.total,
                     other_related[[18]]$followers.total,
                     other_related[[19]]$followers.total,
-                    other_related[[20]]$followers.total))
+                    other_related[[20]]$followers.total)),
+
+    profile = c(c(other_related[[1]]$external_urls.spotify,
+                  other_related[[2]]$external_urls.spotify,
+                  other_related[[3]]$external_urls.spotify,
+                  other_related[[4]]$external_urls.spotify,
+                  other_related[[5]]$external_urls.spotify,
+                  other_related[[6]]$external_urls.spotify,
+                  other_related[[7]]$external_urls.spotify,
+                  other_related[[8]]$external_urls.spotify,
+                  other_related[[9]]$external_urls.spotify,
+                  other_related[[10]]$external_urls.spotify,
+                  other_related[[11]]$external_urls.spotify,
+                  other_related[[12]]$external_urls.spotify,
+                  other_related[[13]]$external_urls.spotify,
+                  other_related[[14]]$external_urls.spotify,
+                  other_related[[15]]$external_urls.spotify,
+                  other_related[[16]]$external_urls.spotify,
+                  other_related[[17]]$external_urls.spotify,
+                  other_related[[18]]$external_urls.spotify,
+                  other_related[[19]]$external_urls.spotify,
+                  other_related[[20]]$external_urls.spotify)),
+
+    images = images,
+    genre = genre
   )
 
   ## Remove duplicate nodes and labels in data frame
 
-  nodes <- distinct(nodes,Vertex,Name,Popularity,Followers,.keep_all = T)
+  nodes_df <- distinct(nodes,name,popularity,profile,
+                       images,genre,followers,.keep_all = T)
 
 
-  return(nodes)
+  return(nodes_df)
+
 
 }
 
