@@ -34,7 +34,7 @@ related_artists_edges <- function(artist_id){
 
   # create edges data.frame
   edges <- data.frame(
-    Vertex1 = tolower(c(other_related[[1]]$name,
+    Vertex1 = c(other_related[[1]]$name,
                         other_related[[2]]$name,
                         other_related[[3]]$name,
                         other_related[[4]]$name,
@@ -53,9 +53,9 @@ related_artists_edges <- function(artist_id){
                         other_related[[17]]$name,
                         other_related[[18]]$name,
                         other_related[[19]]$name,
-                        other_related[[20]]$name)),
+                        other_related[[20]]$name),
 
-    Vertex2 = tolower(c(other_related[[2]]$name,
+    Vertex2 = c(other_related[[2]]$name,
                         other_related[[3]]$name,
                         other_related[[4]]$name,
                         other_related[[5]]$name,
@@ -434,7 +434,7 @@ related_artists_edges <- function(artist_id){
                         other_related[[16]]$name,
                         other_related[[17]]$name,
                         other_related[[18]]$name,
-                        other_related[[19]]$name))
+                        other_related[[19]]$name)
   )
 
   # write self_loop elimination function
